@@ -131,7 +131,7 @@ export default function MiniDrawer() {
           <Grid container spacing={3}>
             <Grid item xs={12} md={8} lg={9}>
               <Paper className={fixedHeightPaper}>
-                <Chart />
+                <Chart userdata={userdata} />
               </Paper>
             </Grid>
 

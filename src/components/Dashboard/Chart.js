@@ -4,7 +4,9 @@ import Title from './Title';
 import Typography from "@material-ui/core/Typography";
 
 
-export default function Charts() {
+export default function Charts(props) {
+  const {userdata} = props;
+  console.log(userdata);
   const theme = useTheme();
 
   return (
