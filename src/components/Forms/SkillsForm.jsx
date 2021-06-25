@@ -18,18 +18,25 @@ import AddIcon from "@material-ui/icons/Add";
 import Button from "@material-ui/core/Button";
 import { Divider } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
-
+import Topbar from "../../pages/Topbar";
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
-    flexDirection: "column",
-    flexWrap: "wrap",
-    width: "75vw",
+    paddingTop: "50px",
+    justifyContent: "center",
+    alignItems: "center",
+    // flexDirection: "column",
+    // flexWrap: "wrap",
+    // width: "75vw",
   },
   textField: {
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
     width: "25ch",
+  },
+  content: {
+    flexGrow: 1,
+    padding: theme.spacing(3),
   },
 }));
 
@@ -69,7 +76,7 @@ export default function SkillsForm() {
       <TextField
         id="standard-basic"
         margin="dense"
-        label="Standard"
+        label="Skill Name"
         style={{ margin: "20px 80px" }}
         onChange={(e) => {
           setValues({
@@ -81,7 +88,7 @@ export default function SkillsForm() {
       <TextField
         id="standard-basic"
         margin="dense"
-        label="Standard"
+        label="Skill Name"
         style={{ margin: "20px 80px" }}
         onChange={(e) => {
           setValues({
@@ -93,7 +100,7 @@ export default function SkillsForm() {
       <TextField
         id="standard-basic"
         margin="dense"
-        label="Standard"
+        label="Skill Name"
         style={{ margin: "20px 80px" }}
         onChange={(e) => {
           setValues({
@@ -105,7 +112,7 @@ export default function SkillsForm() {
       <TextField
         id="standard-basic"
         margin="dense"
-        label="Standard"
+        label="Skill Name"
         style={{ margin: "20px 80px" }}
         onChange={(e) => {
           setValues({
@@ -117,7 +124,7 @@ export default function SkillsForm() {
       <TextField
         id="standard-basic"
         margin="dense"
-        label="Standard"
+        label="Skill Name"
         style={{ margin: "20px 80px" }}
         onChange={(e) => {
           setValues({
@@ -129,7 +136,7 @@ export default function SkillsForm() {
       <TextField
         id="standard-basic"
         margin="dense"
-        label="Standard"
+        label="Skill Name"
         style={{ margin: "20px 80px" }}
         onChange={(e) => {
           setValues({
@@ -144,210 +151,102 @@ export default function SkillsForm() {
 
   return (
     <div className={classes.root}>
-      <h2 style={{ margin: "8px" }}>
-        <b>BASIC INFO</b>
-      </h2>
-      <div style={{ display: "flex" }}>
-        <TextField
-          label="Name"
-          id="outlined-margin-dense"
-          className={classes.textField}
-          helperText="Enter your full name"
-          margin="dense"
-          variant="outlined"
-          required="true"
-          onChange={handleChange("name")}
-        />
-        <TextField
-          label="Job"
-          id="outlined-margin-dense"
-          className={classes.textField}
-          helperText="what Job are you applying for"
-          margin="dense"
-          variant="outlined"
-          required="true"
-          onChange={handleChange("job")}
-        />
-        <TextField
-          label="Email"
-          id="outlined-margin-dense"
-          className={classes.textField}
-          helperText="Enter your email"
-          type="email"
-          margin="dense"
-          variant="outlined"
-          required="true"
-          onChange={handleChange("email")}
-        />
-        <TextField
-          label="Phone Number"
-          id="outlined-margin-dense"
-          className={classes.textField}
-          helperText="your business phone number"
-          margin="dense"
-          variant="outlined"
-          required="true"
-          onChange={handleChange("phoneNo")}
-        />
-      </div>
-      <TextField
-        id="filled-full-width"
-        label="Professional Summary"
-        style={{ margin: 8 }}
-        helperText="Summarize your skills and Experience in less than 100 words"
-        fullWidth
-        required="true"
-        margin="normal"
-        multiline
-        rows={3}
-        InputLabelProps={{
-          shrink: true,
-        }}
-        variant="outlined"
-        onChange={handleChange("proSum")}
-      />
-
-      <h2 style={{ margin: "8px" }}>
-        <b>SKILLS</b>
-      </h2>
-
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          flexDirection: "column",
-        }}
-      >
-        <div className="skillform_skill" style={{ width: "100%" }}>
+      <Topbar />
+      <main className={classes.content}>
+        <h2 style={{ margin: "8px" }}>
+          <b>BASIC INFO</b>
+        </h2>
+        <div style={{ display: "flex" }}>
           <TextField
-            label="Primary Skills"
+            label="Name"
             id="outlined-margin-dense"
             className={classes.textField}
-            helperText="Enter your primary Skills"
+            helperText="Enter your full name"
             margin="dense"
             variant="outlined"
-            onChange={handleChange("skill1")}
-
-            //   required="true"
+            required="true"
+            onChange={handleChange("name")}
           />
-
           <TextField
-            id="filled-full-width"
-            label="skill summary"
-            style={{ margin: 8 }}
-            helperText="Write about your knowledge in this field"
-            fullWidth
-            // required="true"
-            margin="normal"
-            multiline
-            rows={3}
-            InputLabelProps={{
-              shrink: true,
-            }}
-            variant="outlined"
-            onChange={handleChange("skillsum1")}
-          />
-        </div>
-        <div className="skillform_skill" style={{ width: "100%" }}>
-          <TextField
-            label="Secondary Skill"
+            label="Job"
             id="outlined-margin-dense"
             className={classes.textField}
-            helperText="Enter your secondary Skill"
+            helperText="what Job are you applying for"
             margin="dense"
             variant="outlined"
-            onChange={handleChange("skill2")}
-            //   required="true"
+            required="true"
+            onChange={handleChange("job")}
           />
-
           <TextField
-            id="filled-full-width"
-            label="skill summary"
-            style={{ margin: 8 }}
-            helperText="Write about your knowledge in this field"
-            fullWidth
-            // required="true"
-            margin="normal"
-            multiline
-            rows={3}
-            InputLabelProps={{
-              shrink: true,
-            }}
+            label="Email"
+            id="outlined-margin-dense"
+            className={classes.textField}
+            helperText="Enter your email"
+            type="email"
+            margin="dense"
             variant="outlined"
-            onChange={handleChange("skillsum2")}
+            required="true"
+            onChange={handleChange("email")}
+          />
+          <TextField
+            label="Phone Number"
+            id="outlined-margin-dense"
+            className={classes.textField}
+            helperText="your business phone number"
+            margin="dense"
+            variant="outlined"
+            required="true"
+            onChange={handleChange("phoneNo")}
           />
         </div>
-      </div>
+        <TextField
+          id="filled-full-width"
+          label="Professional Summary"
+          style={{ margin: 8 }}
+          helperText="Summarize your skills and Experience in less than 100 words"
+          fullWidth
+          required="true"
+          margin="normal"
+          multiline
+          rows={3}
+          InputLabelProps={{
+            shrink: true,
+          }}
+          variant="outlined"
+          onChange={handleChange("proSum")}
+        />
 
-      <h2 style={{ margin: "8px" }}>
-        <b>TECHNICAL SKILLS</b>
-      </h2>
+        <h2 style={{ margin: "8px" }}>
+          <b>SKILLS</b>
+        </h2>
 
-      <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <div>{[...Array(techSkills)].map((_, i) => techSkillInput())}</div>
-      </div>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            flexDirection: "column",
+          }}
+        >
+          <div className="skillform_skill" style={{ width: "100%" }}>
+            <TextField
+              label="Primary Skills"
+              id="outlined-margin-dense"
+              className={classes.textField}
+              helperText="Enter your primary Skills"
+              margin="dense"
+              variant="outlined"
+              onChange={handleChange("skill1")}
 
-      <h2 style={{ margin: "8px" }}>
-        <b>EXPERIENCE</b>
-      </h2>
+              //   required="true"
+            />
 
-      <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <div style={{ padding: "20px 0", borderBottom: "1px dotted grey" }}>
-          <div style={{ padding: "20px 0", borderBottom: "1px dotted grey" }}>
-            <div>
-              <TextField
-                label="Company"
-                id="outlined-margin-dense"
-                className={classes.textField}
-                helperText="Company you worked In"
-                margin="dense"
-                variant="outlined"
-                required="true"
-                onChange={(e) => {
-                  setValues({
-                    ...values,
-                    exp1: { ...exp1, comp: e.target.value },
-                  });
-                }}
-              />
-              <TextField
-                label="Year"
-                id="outlined-margin-dense"
-                className={classes.textField}
-                helperText="eg: 2007-2009"
-                margin="dense"
-                variant="outlined"
-                required="true"
-                onChange={(e) => {
-                  setValues({
-                    ...values,
-                    exp1: { ...exp1, year: e.target.value },
-                  });
-                }}
-              />
-              <TextField
-                label="Designation"
-                id="outlined-margin-dense"
-                className={classes.textField}
-                helperText="Your designation in the organization"
-                margin="dense"
-                variant="outlined"
-                required="true"
-                onChange={(e) => {
-                  setValues({
-                    ...values,
-                    exp1: { ...exp1, des: e.target.value },
-                  });
-                }}
-              />
-            </div>
             <TextField
               id="filled-full-width"
-              label="Summary"
+              label="skill summary"
               style={{ margin: 8 }}
-              helperText="Summarize your experience in the company"
+              helperText="Write about your knowledge in this field"
               fullWidth
-              required="true"
+              // required="true"
               margin="normal"
               multiline
               rows={3}
@@ -355,70 +254,28 @@ export default function SkillsForm() {
                 shrink: true,
               }}
               variant="outlined"
-              onChange={(e) => {
-                setValues({
-                  ...values,
-                  exp1: { ...exp1, summary: e.target.value },
-                });
-              }}
+              onChange={handleChange("skillsum1")}
             />
           </div>
-          <Divider />
-          <div style={{ padding: "20px 0", borderBottom: "1px dotted grey" }}>
-            <div>
-              <TextField
-                label="Company"
-                id="outlined-margin-dense"
-                className={classes.textField}
-                helperText="Company you worked In"
-                margin="dense"
-                variant="outlined"
-                required="true"
-                onChange={(e) => {
-                  setValues({
-                    ...values,
-                    exp2: { ...exp2, comp: e.target.value },
-                  });
-                }}
-              />
-              <TextField
-                label="Year"
-                id="outlined-margin-dense"
-                className={classes.textField}
-                helperText="eg: 2007-2009"
-                margin="dense"
-                variant="outlined"
-                required="true"
-                onChange={(e) => {
-                  setValues({
-                    ...values,
-                    exp2: { ...exp2, year: e.target.value },
-                  });
-                }}
-              />
-              <TextField
-                label="Designation"
-                id="outlined-margin-dense"
-                className={classes.textField}
-                helperText="Your designation in the organization"
-                margin="dense"
-                variant="outlined"
-                required="true"
-                onChange={(e) => {
-                  setValues({
-                    ...values,
-                    exp2: { ...exp2, des: e.target.value },
-                  });
-                }}
-              />
-            </div>
+          <div className="skillform_skill" style={{ width: "100%" }}>
+            <TextField
+              label="Secondary Skill"
+              id="outlined-margin-dense"
+              className={classes.textField}
+              helperText="Enter your secondary Skill"
+              margin="dense"
+              variant="outlined"
+              onChange={handleChange("skill2")}
+              //   required="true"
+            />
+
             <TextField
               id="filled-full-width"
-              label="Summary"
+              label="skill summary"
               style={{ margin: 8 }}
-              helperText="Summarize your experience in the company"
+              helperText="Write about your knowledge in this field"
               fullWidth
-              required="true"
+              // required="true"
               margin="normal"
               multiline
               rows={3}
@@ -426,138 +283,292 @@ export default function SkillsForm() {
                 shrink: true,
               }}
               variant="outlined"
-              onChange={(e) => {
-                setValues({
-                  ...values,
-                  exp2: { ...exp2, summary: e.target.value },
-                });
-              }}
+              onChange={handleChange("skillsum2")}
             />
           </div>
         </div>
-      </div>
 
-      <h2 style={{ margin: "8px" }}>
-        <b>EDUCATION</b>
-      </h2>
+        <h2 style={{ margin: "8px" }}>
+          <b>TECHNICAL SKILLS</b>
+        </h2>
 
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          flexDirection: "column",
-        }}
-      >
-        <div style={{ padding: "20px 0" }}>
-          <div>
-            <TextField
-              label="Graduation"
-              id="outlined-margin-dense"
-              className={classes.textField}
-              helperText="Name of college"
-              margin="dense"
-              variant="outlined"
-              required="true"
-              onChange={(e) => {
-                setValues({
-                  ...values,
-                  edu1: { ...edu1, college: e.target.value },
-                });
-              }}
-            />
-            <TextField
-              label="Major"
-              id="outlined-margin-dense"
-              className={classes.textField}
-              helperText="Enter your Major"
-              margin="dense"
-              variant="outlined"
-              required="true"
-              onChange={(e) => {
-                setValues({
-                  ...values,
-                  edu1: { ...edu1, major: e.target.value },
-                });
-              }}
-            />
-            <TextField
-              label="GPA"
-              id="outlined-margin-dense"
-              className={classes.textField}
-              helperText="GPA"
-              margin="dense"
-              variant="outlined"
-              required="true"
-              onChange={(e) => {
-                setValues({
-                  ...values,
-                  edu1: { ...edu1, gpa: e.target.value },
-                });
-              }}
-            />
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <div>{[...Array(techSkills)].map((_, i) => techSkillInput())}</div>
+        </div>
+
+        <h2 style={{ margin: "8px" }}>
+          <b>EXPERIENCE</b>
+        </h2>
+
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <div style={{ padding: "20px 0", borderBottom: "1px dotted grey" }}>
+            <div style={{ padding: "20px 0", borderBottom: "1px dotted grey" }}>
+              <div>
+                <TextField
+                  label="Company"
+                  id="outlined-margin-dense"
+                  className={classes.textField}
+                  helperText="Company you worked In"
+                  margin="dense"
+                  variant="outlined"
+                  required="true"
+                  onChange={(e) => {
+                    setValues({
+                      ...values,
+                      exp1: { ...exp1, comp: e.target.value },
+                    });
+                  }}
+                />
+                <TextField
+                  label="Year"
+                  id="outlined-margin-dense"
+                  className={classes.textField}
+                  helperText="eg: 2007-2009"
+                  margin="dense"
+                  variant="outlined"
+                  required="true"
+                  onChange={(e) => {
+                    setValues({
+                      ...values,
+                      exp1: { ...exp1, year: e.target.value },
+                    });
+                  }}
+                />
+                <TextField
+                  label="Designation"
+                  id="outlined-margin-dense"
+                  className={classes.textField}
+                  helperText="Your designation in the organization"
+                  margin="dense"
+                  variant="outlined"
+                  required="true"
+                  onChange={(e) => {
+                    setValues({
+                      ...values,
+                      exp1: { ...exp1, des: e.target.value },
+                    });
+                  }}
+                />
+              </div>
+              <TextField
+                id="filled-full-width"
+                label="Summary"
+                style={{ margin: 8 }}
+                helperText="Summarize your experience in the company"
+                fullWidth
+                required="true"
+                margin="normal"
+                multiline
+                rows={3}
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                variant="outlined"
+                onChange={(e) => {
+                  setValues({
+                    ...values,
+                    exp1: { ...exp1, summary: e.target.value },
+                  });
+                }}
+              />
+            </div>
+            <Divider />
+            <div style={{ padding: "20px 0", borderBottom: "1px dotted grey" }}>
+              <div>
+                <TextField
+                  label="Company"
+                  id="outlined-margin-dense"
+                  className={classes.textField}
+                  helperText="Company you worked In"
+                  margin="dense"
+                  variant="outlined"
+                  required="true"
+                  onChange={(e) => {
+                    setValues({
+                      ...values,
+                      exp2: { ...exp2, comp: e.target.value },
+                    });
+                  }}
+                />
+                <TextField
+                  label="Year"
+                  id="outlined-margin-dense"
+                  className={classes.textField}
+                  helperText="eg: 2007-2009"
+                  margin="dense"
+                  variant="outlined"
+                  required="true"
+                  onChange={(e) => {
+                    setValues({
+                      ...values,
+                      exp2: { ...exp2, year: e.target.value },
+                    });
+                  }}
+                />
+                <TextField
+                  label="Designation"
+                  id="outlined-margin-dense"
+                  className={classes.textField}
+                  helperText="Your designation in the organization"
+                  margin="dense"
+                  variant="outlined"
+                  required="true"
+                  onChange={(e) => {
+                    setValues({
+                      ...values,
+                      exp2: { ...exp2, des: e.target.value },
+                    });
+                  }}
+                />
+              </div>
+              <TextField
+                id="filled-full-width"
+                label="Summary"
+                style={{ margin: 8 }}
+                helperText="Summarize your experience in the company"
+                fullWidth
+                required="true"
+                margin="normal"
+                multiline
+                rows={3}
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                variant="outlined"
+                onChange={(e) => {
+                  setValues({
+                    ...values,
+                    exp2: { ...exp2, summary: e.target.value },
+                  });
+                }}
+              />
+            </div>
           </div>
         </div>
-        <div style={{ padding: "20px 0", borderBottom: "1px dotted grey" }}>
-          <div>
-            <TextField
-              label="Post Graduation"
-              id="outlined-margin-dense"
-              className={classes.textField}
-              helperText="Name of college"
-              margin="dense"
-              variant="outlined"
-              required="true"
-              onChange={(e) => {
-                setValues({
-                  ...values,
-                  edu2: { ...edu2, college: e.target.value },
-                });
-              }}
-            />
-            <TextField
-              label="Major"
-              id="outlined-margin-dense"
-              className={classes.textField}
-              helperText="Enter your Major"
-              margin="dense"
-              variant="outlined"
-              required="true"
-              onChange={(e) => {
-                setValues({
-                  ...values,
-                  edu2: { ...edu2, major: e.target.value },
-                });
-              }}
-            />
-            <TextField
-              label="GPA"
-              id="outlined-margin-dense"
-              className={classes.textField}
-              helperText="GPA"
-              margin="dense"
-              variant="outlined"
-              required="true"
-              onChange={(e) => {
-                setValues({
-                  ...values,
-                  edu2: { ...edu2, gpa: e.target.value },
-                });
-              }}
-            />
+
+        <h2 style={{ margin: "8px" }}>
+          <b>EDUCATION</b>
+        </h2>
+
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            flexDirection: "column",
+          }}
+        >
+          <div style={{ padding: "20px 0" }}>
+            <div>
+              <TextField
+                label="Graduation"
+                id="outlined-margin-dense"
+                className={classes.textField}
+                helperText="Name of college"
+                margin="dense"
+                variant="outlined"
+                required="true"
+                onChange={(e) => {
+                  setValues({
+                    ...values,
+                    edu1: { ...edu1, college: e.target.value },
+                  });
+                }}
+              />
+              <TextField
+                label="Major"
+                id="outlined-margin-dense"
+                className={classes.textField}
+                helperText="Enter your Major"
+                margin="dense"
+                variant="outlined"
+                required="true"
+                onChange={(e) => {
+                  setValues({
+                    ...values,
+                    edu1: { ...edu1, major: e.target.value },
+                  });
+                }}
+              />
+              <TextField
+                label="GPA"
+                id="outlined-margin-dense"
+                className={classes.textField}
+                helperText="GPA"
+                margin="dense"
+                variant="outlined"
+                required="true"
+                onChange={(e) => {
+                  setValues({
+                    ...values,
+                    edu1: { ...edu1, gpa: e.target.value },
+                  });
+                }}
+              />
+            </div>
+          </div>
+          <div style={{ padding: "20px 0", borderBottom: "1px dotted grey" }}>
+            <div>
+              <TextField
+                label="Post Graduation"
+                id="outlined-margin-dense"
+                className={classes.textField}
+                helperText="Name of college"
+                margin="dense"
+                variant="outlined"
+                required="true"
+                onChange={(e) => {
+                  setValues({
+                    ...values,
+                    edu2: { ...edu2, college: e.target.value },
+                  });
+                }}
+              />
+              <TextField
+                label="Major"
+                id="outlined-margin-dense"
+                className={classes.textField}
+                helperText="Enter your Major"
+                margin="dense"
+                variant="outlined"
+                required="true"
+                onChange={(e) => {
+                  setValues({
+                    ...values,
+                    edu2: { ...edu2, major: e.target.value },
+                  });
+                }}
+              />
+              <TextField
+                label="GPA"
+                id="outlined-margin-dense"
+                className={classes.textField}
+                helperText="GPA"
+                margin="dense"
+                variant="outlined"
+                required="true"
+                onChange={(e) => {
+                  setValues({
+                    ...values,
+                    edu2: { ...edu2, gpa: e.target.value },
+                  });
+                }}
+              />
+            </div>
           </div>
         </div>
-      </div>
 
-      <Button
-        variant="contained"
-        color="primary"
-        className={classes.button}
-        onClick={() => setSubmit(true)}
-      >
-        Submit
-      </Button>
+        <Button
+          variant="contained"
+          color="primary"
+          className={classes.button}
+          style={{ marginTop: "20px" }}
+          onClick={() => setSubmit(true)}
+        >
+          Submit
+        </Button>
 
-      {submit ? handleSubmit() : null}
+        {submit ? handleSubmit() : null}
+      </main>
     </div>
   );
 }
