@@ -1,4 +1,5 @@
 import firebase from "firebase";
+//import * as firebase from "firebase";
 
 const firebaseConfig = {
     apiKey: "AIzaSyByMAiUDXbDxlKB23xqNb5D7-nBp3Nnwdg",
@@ -10,10 +11,15 @@ const firebaseConfig = {
     measurementId: "G-N5LR0T78HV"
   };
 
-  const firebaseApp = firebase.initializeApp(firebaseConfig);
-  const db = firebaseApp.firestore();
+  
+  var fireDb = firebase.initializeApp(firebaseConfig);
+  
+  const db = fireDb.firestore();
   const auth = firebase.auth();
   const provider = new firebase.auth.GoogleAuthProvider();
 
   export {auth,provider};
-  export default firebase;
+  export {firebase};
+  export default fireDb.database().ref();
+
+ 

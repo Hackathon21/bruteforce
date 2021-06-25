@@ -4,7 +4,10 @@ import fire from '../config/firebase';
 import { Button } from '@themesberg/react-bootstrap';
 import "../css/Grades.css";
 
+
+
 class Grades extends Component{
+    
 
     state={
         text : ""
@@ -16,10 +19,10 @@ class Grades extends Component{
         })
       }
       handleSubmit=e=>{
-        let messageRef = fire.database().ref('Subject').orderByKey().limitToLast(100);
-        fire.database().ref('Subject').push(this.state.text);
+        let messageRef = fire.database().ref().child('Subject')
+            .child('maths').push(this.state.text);
         this.setState({
-          text : ""
+        text : ""
         })
       }
     
@@ -29,6 +32,7 @@ class Grades extends Component{
             <Topbar/>
           <div className="page-content">
             <input type ="text" onChange={this.handleText} id="inputText"/>
+            <input type ="text"  id="inputSubject" placeholder="Subject"/>
             <br/>
             <button onClick={this.handleSubmit}> Save </button>
           

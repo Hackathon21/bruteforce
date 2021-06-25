@@ -5,12 +5,16 @@ import SkillForm from "./components/Forms/SkillsForm";
 import Landing from "./components/Dashboard/Landing";
 import Login from "./pages/Login";
 import Grades from "./pages/Grades";
+import Contact from "../src/pages/Contacts";
 const Routes = () => {
   return (
     <BrowserRouter>
       <Switch>
-      <Route exact path="/login">
+        <Route exact path="/login">
           <Login />
+        </Route>
+        <Route exact path="/contact">
+          <Contact />
         </Route>
         <Route exact path="/resume">
           <ResumePage />
