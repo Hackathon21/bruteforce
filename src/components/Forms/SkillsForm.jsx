@@ -11,11 +11,13 @@ Education -> college name, major gpa
 */
 
 import React, { useState } from "react";
+import { Redirect } from "react-router";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import AddIcon from "@material-ui/icons/Add";
 import Button from "@material-ui/core/Button";
 import { Divider } from "@material-ui/core";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -33,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SkillsForm() {
   const classes = useStyles();
-
+  const history = useHistory();
   let skillCounts = 1;
 
   const [values, setValues] = useState({
@@ -52,12 +54,15 @@ export default function SkillsForm() {
     edu1: { college: "", major: "", gpa: "" },
     edu2: { college: "", major: "", gpa: "" },
   });
-
+  const [submit, setSubmit] = useState(false);
   const { exp1, exp2, edu1, edu2, techSkill } = values;
   const handleChange = (name) => (event) => {
     setValues({ ...values, [name]: event.target.value });
   };
 
+  const handleSubmit = () => {
+    return history.push({ pathname: "/resume", data: { values } });
+  };
   console.log(values);
   const techSkillInput = () => (
     <>
@@ -543,9 +548,16 @@ export default function SkillsForm() {
         </div>
       </div>
 
-      <Button variant="contained" color="primary" className={classes.button} s>
+      <Button
+        variant="contained"
+        color="primary"
+        className={classes.button}
+        onClick={() => setSubmit(true)}
+      >
         Submit
       </Button>
+
+      {submit ? handleSubmit() : null}
     </div>
   );
 }

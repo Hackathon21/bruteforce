@@ -34,7 +34,6 @@ import Chart from "./Chart";
 import Deposits from "./Deposits";
 import Assignments from "./Assignments";
 import Grades from "./Grades";
-
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -130,7 +129,8 @@ function Copyright() {
   );
 }
 
-export default function MiniDrawer() {
+export default function MiniDrawer(props) {
+  console.log(props);
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);

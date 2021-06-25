@@ -25,7 +25,15 @@ const tech = [
   { name: "macos" },
 ];
 
-const ResumeTemp = () => {
+const ResumeTemp = ({ history }) => {
+  const { values } = history?.location?.data;
+  const { exp1, exp2, edu1, edu2 } = values;
+  const { s1, s2, s3, s4, s5, s6 } = values.techSkill;
+  const techskills = [s1, s2, s3, s4, s5, s6];
+
+  console.log(techskills);
+  console.log("resumedata:", values);
+
   return (
     <section
       style={{
@@ -42,8 +50,8 @@ const ResumeTemp = () => {
               style={{ display: "flex", justifyContent: "space-between" }}
             >
               <div class="yui-u first">
-                <h1>Jonathan Doe</h1>
-                <h2>Web Designer, Director</h2>
+                <h1>{values.name}</h1>
+                <h2>{values.job}</h2>
               </div>
 
               <div class="yui-u">
@@ -54,9 +62,9 @@ const ResumeTemp = () => {
                     </a>
                   </h3>
                   <h3>
-                    <a href="mailto:name@yourdomain.com">name@yourdomain.com</a>
+                    <a href="mailto:name@yourdomain.com">{values.email}</a>
                   </h3>
-                  <h3>(313) - 867-5309</h3>
+                  <h3>{values.phoneNo}</h3>
                 </div>
               </div>
             </div>
@@ -70,11 +78,7 @@ const ResumeTemp = () => {
                     <h1>Profile</h1>
                   </div>
                   <div class="yui-u">
-                    <p class="enlarge">
-                      Progressively evolve cross-platform ideas before impactful
-                      infomediaries. Energistically visualize tactical
-                      initiatives before cross-media catalysts for change.
-                    </p>
+                    <p class="enlarge">{values.proSum}</p>
                   </div>
                 </div>
 
@@ -83,12 +87,14 @@ const ResumeTemp = () => {
                     <h1>Skills</h1>
                   </div>
                   <div class="yui-u">
-                    {skills.map((val) => (
-                      <div class="talent">
-                        <h2>{val.head}</h2>
-                        <p>{val.para}</p>
-                      </div>
-                    ))}
+                    <div class="talent">
+                      <h2>{values.skill1}</h2>
+                      <p>{values.skillsum1}</p>
+                    </div>
+                    <div class="talent">
+                      <h2>{values.skill2}</h2>
+                      <p>{values.skillsum2}</p>
+                    </div>
                   </div>
                 </div>
 
@@ -101,7 +107,7 @@ const ResumeTemp = () => {
                       class="talent"
                       style={{ display: "flex", flexWrap: "wrap" }}
                     >
-                      {tech.map((val) => (
+                      {techskills.map((val) => (
                         <li
                           style={{
                             width: "33%",
@@ -110,7 +116,7 @@ const ResumeTemp = () => {
                             fontSize: "1.2rem",
                           }}
                         >
-                          {val.name}
+                          {val}
                         </li>
                       ))}
                     </ul>
@@ -124,69 +130,40 @@ const ResumeTemp = () => {
 
                   <div class="yui-u">
                     <div class="job">
-                      <h2>Facebook</h2>
-                      <h3>Senior Interface Designer</h3>
-                      <h4>2005-2007</h4>
-                      <p>
-                        Intrinsicly enable optimal core competencies through
-                        corporate relationships. Phosfluorescently implement
-                        worldwide vortals and client-focused imperatives.
-                        Conveniently initiate virtual paradigms and top-line
-                        convergence.{" "}
-                      </p>
+                      <h2>{exp1.comp}</h2>
+                      <h3>{exp1.des}</h3>
+                      <h4>{exp1.year}</h4>
+                      <p>{exp1.summary}</p>
                     </div>
 
                     <div class="job">
-                      <h2>Apple Inc.</h2>
-                      <h3>Senior Interface Designer</h3>
-                      <h4>2005-2007</h4>
-                      <p>
-                        Progressively reconceptualize multifunctional "outside
-                        the box" thinking through inexpensive methods of
-                        empowerment. Compellingly morph extensive niche markets
-                        with mission-critical ideas. Phosfluorescently deliver
-                        bricks-and-clicks strategic theme areas rather than
-                        scalable benefits.{" "}
-                      </p>
-                    </div>
-
-                    <div class="job">
-                      <h2>Microsoft</h2>
-                      <h3>Principal and Creative Lead</h3>
-                      <h4>2004-2005</h4>
-                      <p>
-                        Intrinsicly transform flexible manufactured products
-                        without excellent intellectual capital. Energistically
-                        evisculate orthogonal architectures through covalent
-                        action items. Assertively incentivize sticky platforms
-                        without synergistic materials.{" "}
-                      </p>
-                    </div>
-
-                    <div class="job last">
-                      <h2>International Business Machines (IBM)</h2>
-                      <h3>Lead Web Designer</h3>
-                      <h4>2001-2004</h4>
-                      <p>
-                        Globally re-engineer cross-media schemas through viral
-                        methods of empowerment. Proactively grow long-term
-                        high-impact human capital and highly efficient
-                        innovation. Intrinsicly iterate excellent e-tailers with
-                        timely e-markets.
-                      </p>
+                      <h2>{exp2.comp}</h2>
+                      <h3>{exp2.des}</h3>
+                      <h4>{exp2.year}</h4>
+                      <p>{exp2.summary}</p>
                     </div>
                   </div>
                 </div>
 
                 <div class="yui-gf last">
                   <div class="yui-u first">
-                    <h1>Education</h1>
+                    <h1>Graduation</h1>
                   </div>
                   <div class="yui-u">
-                    <h2>Indiana University - Bloomington, Indiana</h2>
+                    <h2>{edu1.college}</h2>
                     <h3>
-                      Dual Major, Economics and English &mdash;{" "}
-                      <strong>4.0 GPA</strong>{" "}
+                      {edu1.major} &mdash; <strong>{edu1.gpa}</strong>{" "}
+                    </h3>
+                  </div>
+                </div>
+                <div class="yui-gf last">
+                  <div class="yui-u first">
+                    <h1>Post Graduation</h1>
+                  </div>
+                  <div class="yui-u">
+                    <h2>{edu2.college}</h2>
+                    <h3>
+                      {edu2.major} &mdash; <strong>{edu2.gpa}</strong>{" "}
                     </h3>
                   </div>
                 </div>
@@ -196,9 +173,9 @@ const ResumeTemp = () => {
 
           <div id="ft">
             <p>
-              Jonathan Doe &mdash;{" "}
-              <a href="mailto:name@yourdomain.com">name@yourdomain.com</a>{" "}
-              &mdash; (313) - 867-5309
+              {values.name} &mdash;{" "}
+              <a href="mailto:name@yourdomain.com">{values.email}</a> &mdash;{" "}
+              {values.phoneNo}
             </p>
           </div>
         </div>

@@ -7,9 +7,12 @@ const Routes = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path="/resume">
-          <ResumePage />
-        </Route>
+        <Route
+          exact
+          path="/resume"
+          // component={<ResumePage />}
+          render={(props) => <ResumePage {...props} />}
+        />
         <Route exact path="/check">
           <Landing />
         </Route>
