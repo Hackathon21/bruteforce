@@ -1,14 +1,12 @@
-import { Button } from 'bootstrap';
+import Button from '@material-ui/core/Button';
 import React, { useState } from 'react';
-import { facebookProvider, googleProvider } from '../config/authMethods';
-import socialMediaAuth from '../service/auth';
-import '../css/Login.css';
-import logo from "../media/student-logo.png"
-import Topbar from "../pages/Topbar";
 import { Redirect } from 'react-router-dom';
+import { googleProvider } from '../config/authMethods';
+import socialMediaAuth from '../service/auth';
+import web from './images/interview.svg';
+import './login.css';
 
-function Login(){
-
+const Login = () => {
     const [loggedIn, setLoggedIn] = useState(false)
     const handleOnClick = (provider) =>{
         socialMediaAuth(provider).then( async res =>{
@@ -30,20 +28,34 @@ function Login(){
         })
         // console.log(res);
     }
-    return(
+    return (
         <>
-        <div className="login">
-            
-            {/* <button onClick={() => handleOnClick(facebookProvider)}>Facebook</button> */}
-            <div className="login__logo">
-                <img src={logo} />
-            </div>
-            <button type="submit" onClick={() => handleOnClick(googleProvider)}>LogIn with Google</button>
-
-        </div>
-        {loggedIn ? <Redirect to="/dashboard" />: ''}
+            <section id="header" className="d-flex align-items-center">
+                <div className="container-fluid ">
+                    <div className="row">
+                        <div className="col-10 mx-auto">
+                            <div className="row">
+                            <div className="col-md-6 pt-5 pt-lg-0 order-2 order-lg-1 d-flex justify-content-center flex-column">
+                                <h1> Welcome to 
+                                    <strong className="brand-name"> StudentsMate </strong></h1>
+                                <h2 className="my-3">
+                                    Your All in one platform for managing your student life
+                                </h2>
+                                <div className="mt-3">
+                                <Button variant="contained" color="primary" type="submit" onClick={() => handleOnClick(googleProvider)}>LogIn with Google</Button>
+                                </div>
+                            </div>
+                            <div className="col-lg-6 order-1 order-lg-2 header-img">
+                                <img src={web} className="img-fluid animated" alt="Common img"/>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            {loggedIn ? <Redirect to="/dashboard" />: ''}
         </>
-    )
-}
+    );
+};
 
-export default Login
+export default Login;

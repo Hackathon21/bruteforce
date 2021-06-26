@@ -12,7 +12,7 @@ import Assignments from "./Assignments";
 import Chart from "./Chart";
 import Deposits from "./Deposits";
 import Grades from "./Grades";
-import { isAuthenticated } from "../../utils/auth";
+// import { isAuthenticated } from "../../utils/auth";
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -108,12 +108,12 @@ function Copyright() {
   );
 }
 
-export default function MiniDrawer() {
+export default function Landing() {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
-  const userdata = isAuthenticated();
+  // const userdata = isAuthenticated();
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -131,7 +131,7 @@ export default function MiniDrawer() {
           <Grid container spacing={3}>
             <Grid item xs={12} md={8} lg={9}>
               <Paper className={fixedHeightPaper}>
-                <Chart userdata={userdata} />
+                <Chart />
               </Paper>
             </Grid>
 

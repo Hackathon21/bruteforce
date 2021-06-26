@@ -1,36 +1,27 @@
 import React from "react";
-import { BrowserRouter, Switch, Route, Router } from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import ResumePage from "./pages/Resume";
 import SkillForm from "./components/Forms/SkillsForm";
 import Landing from "./components/Dashboard/Landing";
 import Login from "./pages/Login";
-import Grades from "./pages/Grades";
+import PrivateRoute from "./utils/PrivateRoutes";
+// import Home from "./pages/Home";
 const Routes = () => {
   return (
     <BrowserRouter>
       <Switch>
-      <Route exact path="/login">
+        <Route exact path="/">
           <Login />
         </Route>
         <Route
           exact
           path="/resume"
-          // component={<ResumePage />}
           render={(props) => <ResumePage {...props} />}
         />
-    
-        <Route exact path="/check">
-          <Landing />
-        </Route>
-        <Route exact path="/resumedata">
-          <SkillForm />
-        </Route>
-        <Route exact path="/dashboard">
-          <Landing />
-        </Route>
-        <Route exact path="/grades">
-          <Grades />
-        </Route>
+
+        <PrivateRoute exact path="/resumedata" component={SkillForm} />
+
+        <PrivateRoute exact path="/dashboard" component={Landing} />
       </Switch>
     </BrowserRouter>
   );

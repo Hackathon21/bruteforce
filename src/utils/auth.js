@@ -1,3 +1,4 @@
+
 export const isAuthenticated = ()=>{
     if(typeof window == "undefined"){
         return false
@@ -11,3 +12,13 @@ export const isAuthenticated = ()=>{
         return false;
     }
 }
+
+export const logout = () => {
+    
+    if(typeof window !== "undefined"){
+        localStorage.removeItem("userData");
+
+        window.location.reload()
+    }
+
+  }

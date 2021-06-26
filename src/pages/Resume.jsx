@@ -1,29 +1,7 @@
 import React from "react";
 import "../css/resume.css";
-
+import { Button } from "@material-ui/core";
 // import
-
-const skills = [
-  {
-    head: "web design",
-    para: "Assertively exploit wireless initiatives rather than synergistic core competencies",
-  },
-  {
-    head: "web design",
-    para: "Assertively exploit wireless initiatives rather than synergistic core competencies",
-  },
-  {
-    head: "web design",
-    para: "Assertively exploit wireless initiatives rather than synergistic core competencies",
-  },
-];
-const tech = [
-  { name: "macos" },
-  { name: "macos" },
-  { name: "macos" },
-  { name: "macos" },
-  { name: "macos" },
-];
 
 const ResumeTemp = ({ history }) => {
   const { values } = history?.location?.data;
@@ -31,9 +9,12 @@ const ResumeTemp = ({ history }) => {
   const { s1, s2, s3, s4, s5, s6 } = values.techSkill;
   const techskills = [s1, s2, s3, s4, s5, s6];
 
+  // const ref = React.createRef();
+
   console.log(techskills);
   console.log("resumedata:", values);
-
+  // const ref = React.createRef();
+  // const curcom = this.ref
   return (
     <section
       style={{
@@ -57,9 +38,13 @@ const ResumeTemp = ({ history }) => {
               <div class="yui-u">
                 <div class="contact-info">
                   <h3>
-                    <a id="pdf" href="#">
+                    <Button
+                      id="pdf"
+                      onClick={() => window.print()}
+                      href="/resume"
+                    >
                       Download PDF
-                    </a>
+                    </Button>
                   </h3>
                   <h3>
                     <a href="mailto:name@yourdomain.com">{values.email}</a>
@@ -77,7 +62,7 @@ const ResumeTemp = ({ history }) => {
                   <div class="yui-u first">
                     <h1>Profile</h1>
                   </div>
-                  <div class="yui-u">
+                  <div class="yui-u" style={{ maxWidth: "180px" }}>
                     <p class="enlarge">{values.proSum}</p>
                   </div>
                 </div>

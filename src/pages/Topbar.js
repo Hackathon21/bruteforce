@@ -1,41 +1,28 @@
-import React from "react";
-import clsx from "clsx";
-import {Link} from 'react-router-dom'
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import Drawer from "@material-ui/core/Drawer";
 import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import List from "@material-ui/core/List";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
+import Drawer from "@material-ui/core/Drawer";
 import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
-import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
-import ChevronRightIcon from "@material-ui/icons/ChevronRight";
+import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
-import MailIcon from "@material-ui/icons/Mail";
-import GradeIcon from "@material-ui/icons/Grade";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
 import AssignmentIcon from "@material-ui/icons/Assignment";
 import BookIcon from "@material-ui/icons/Book";
-import WorkIcon from "@material-ui/icons/Work";
+import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
+import ChevronRightIcon from "@material-ui/icons/ChevronRight";
+import GradeIcon from "@material-ui/icons/Grade";
+import MenuIcon from "@material-ui/icons/Menu";
 import ReceiptIcon from "@material-ui/icons/Receipt";
-import Box from "@material-ui/core/Box";
-
-import Container from "@material-ui/core/Container";
-import Grid from "@material-ui/core/Grid";
-import Paper from "@material-ui/core/Paper";
-// import Link from "@material-ui/core/Link";
-import NotificationsIcon from "@material-ui/icons/Notifications";
-
-import Chart from "../components/Dashboard/Chart";
-import Deposits from "../components/Dashboard/Deposits";
-import Assignments from "../components/Dashboard/Assignments";
-import Grades from "../components/Dashboard/Grades";
-import { Redirect } from "react-router-dom";
+import WorkIcon from "@material-ui/icons/Work";
+import clsx from "clsx";
+import React from "react";
+import { Link } from 'react-router-dom';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import { logout } from "../utils/auth";
 
 const drawerWidth = 240;
 
@@ -230,6 +217,12 @@ export default function MiniDrawer() {
             <ListItemText primary="Get Resume" />
           </ListItem>
           </Link>
+          <ListItem style ={{color:'red'}} button onClick={()=> logout()}>
+            <ListItemIcon>
+              <ExitToAppIcon style ={{color:'red'}} />
+            </ListItemIcon>
+            <ListItemText primary="Logout" />
+          </ListItem>
         </List>
       </Drawer>
      
