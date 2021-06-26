@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import { googleProvider } from '../config/authMethods';
-import '../css/Login.css';
+import '../css/login.css';
 import logo from "../media/student-logo.png";
 import socialMediaAuth from '../service/auth';
 

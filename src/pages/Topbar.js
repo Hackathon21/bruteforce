@@ -154,7 +154,7 @@ export default function MiniDrawer() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap>
-            Mini variant drawer
+            StudentsMate
           </Typography>
         </Toolbar>
       </AppBar>
@@ -192,7 +192,7 @@ export default function MiniDrawer() {
             <ListItemIcon>
               <AssignmentIcon />
             </ListItemIcon>
-            <ListItemText primary="Assinments" />
+            <ListItemText primary="Assignments" />
           </ListItem>
           <ListItem button>
             <ListItemIcon>

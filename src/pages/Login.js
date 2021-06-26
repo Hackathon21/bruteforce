@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom';
 import { googleProvider } from '../config/authMethods';
 import socialMediaAuth from '../service/auth';
 import web from './images/interview.svg';
-import './login.css';
+import '../css/login.css';
 
 const Login = () => {
     const [loggedIn, setLoggedIn] = useState(false)
