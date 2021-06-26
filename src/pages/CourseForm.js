@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import {isAuthenticated} from "../utils/auth";
 
-const ContactForm = (props) => {
+const CourseForm = (props) => {
+    const userData = isAuthenticated();
+    const user_id = userData.id;
     const initialFieldValues = {
         fullName: '',
         mobile: '',
-        email: '',
+        email: `${user_id}`,
         address: ''
     }
 
@@ -32,16 +35,17 @@ const ContactForm = (props) => {
         e.preventDefault()
         props.addOrEdit(values);
     }
-
+    
     return (
+        
         <form autoComplete="off" onSubmit={handleFormSubmit}>
             <div className="form-group input-group">
                 <div className="input-group-prepend">
                     <div className="input-group-text">
-                        <i className="fas fa-user"></i>
+                        <i className="fas fa-book"></i>
                     </div>
                 </div>
-                <input className="form-control" name="fullName" placeholder="Full Name"
+                <input className="form-control" name="fullName" placeholder="Subject Name"
                     value={values.fullName}
                     onChange={handleInputChange}
                 />
@@ -50,34 +54,34 @@ const ContactForm = (props) => {
                 <div className="form-group input-group col-md-6">
                     <div className="input-group-prepend">
                         <div className="input-group-text">
-                            <i className="fas fa-mobile-alt"></i>
+                            <i className="fas fa-percent"></i>
                         </div>
                     </div>
 
-                    <input className="form-control" name="mobile" placeholder="Mobile"
+                    <input className="form-control" name="mobile" placeholder="Completion Percentage"
                         value={values.mobile}
                         onChange={handleInputChange}
                     />
                 </div>
                 <div className="form-group input-group col-md-6">
-                    <div className="input-group-prepend">
+                    {/* <div className="input-group-prepend">
                         <div className="input-group-text">
                             <i className="fas fa-envelope"></i>
                         </div>
-                    </div>
-                    <input className="form-control" name="email" placeholder="Email"
+                    </div> */}
+                    <input className="form-control" name="email" placeholder="Email" type="hidden"
                         value={values.email}
-                        onChange={handleInputChange}
+                       // onChange={handleInputChange}
                     />
                 </div>
             </div>
-            <div className="form-group">
-            /*instead of this input use textarea - issue with my syntax highlighter */
+            {/* <div className="form-group">
+            
                <input className="form-control" name="address" placeholder="Address"
                     value={values.address}
                     onChange={handleInputChange}
                 />
-            </div>
+            </div> */}
             <div className="form-group">
                 <input type="submit" value={props.currentId == "" ? "Save" : "Update"} className="btn btn-primary btn-block" />
             </div>
@@ -85,4 +89,4 @@ const ContactForm = (props) => {
     );
 }
 
-export default ContactForm;
+export default CourseForm;

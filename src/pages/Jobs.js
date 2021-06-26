@@ -1,27 +1,34 @@
 import React, { useState, useEffect } from 'react';
-import ContactForm from "../pages/ContactForm";
+import ContactForm from "../pages/JobsForm";
 import firebaseDb from "../config/firebase";
+import {isAuthenticated} from "../utils/auth";
+import Topbar from "../pages/Topbar";
+import "../css/Contact.css";
 
-const Contacts = () => {
+
+const Jobs = () => {
 
 	var [currentId, setCurrentId] = useState('');
     var [contactObjects, setContactObjects] = useState({})
 
     //Once components load complete
     useEffect(() => {
-        firebaseDb.child('contacts').on('value', snapshot => {
+        firebaseDb.child('jobs').on('value', snapshot => {
             if (snapshot.val() != null) {
-                setContactObjects({
-                    ...snapshot.val()
-                });
+                
+                    setContactObjects({
+                        ...snapshot.val()
+
+                    });
+                
             }
         })
     }, [])
-
+    console.log(contactObjects)
 
     const addOrEdit = (obj) => {
         if (currentId == '')
-        firebaseDb.child('contacts').push(
+        firebaseDb.child('jobs').push(
             obj,
             err => {
                 if (err)
@@ -30,7 +37,7 @@ const Contacts = () => {
                     setCurrentId('')
             })
     else
-        firebaseDb.child(`contacts/${currentId}`).set(
+        firebaseDb.child(`jobs/${currentId}`).set(
             obj,
             err => {
                 if (err)
@@ -42,7 +49,7 @@ const Contacts = () => {
 
     const onDelete = id => {
         if (window.confirm('Are you sure to delete this record?')) {
-            firebaseDb.child(`contacts/${id}`).remove(
+            firebaseDb.child(`jobs/${id}`).remove(
                 err => {
                     if (err)
                         console.log(err)
@@ -51,13 +58,15 @@ const Contacts = () => {
                 })
         }
     }
-
+    const userData = isAuthenticated();
+    const user_id = userData.id;
 
   return (
-        <>
+        <div className="main_body">
+        <Topbar/>
             <div className="jumbotron jumbotron-fluid">
                 <div className="container">
-                    <h1 className="display-4 text-center">Contact Manager</h1>
+                    <h1 className="display-4 text-center">Jobs Applied</h1>
                 </div>
             </div>
             <div className="row">
@@ -68,36 +77,42 @@ const Contacts = () => {
                     <table className="table table-borderless table-stripped">
                         <thead className="thead-light">
                             <tr>
-                                <th>Name</th>
-                                <th>Mobile</th>
-                                <th>Email</th>
+                                <th>Job Name</th>
+                                <th>Heard Back</th>
+                                {/* <th>Email</th> */}
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
                             {
-                                Object.keys(contactObjects).map((key) => (
+                                Object.keys(contactObjects).map((val,key) =>(
+                                   
+                                    (user_id == contactObjects[val].email ) ? 
+                                (
+                                    
                                     <tr key={key}>
-                                        <td>{contactObjects[key].fullName}</td>
-                                        <td>{contactObjects[key].mobile}</td>
-                                        <td>{contactObjects[key].email}</td>
+                                        
+                                        <td>{contactObjects[val].fullName}</td>
+                                        <td>{contactObjects[val].mobile}</td>
+                                        {/* <td>{contactObjects[val].email}</td> */}
                                         <td className="bg-light">
-                                            <a className="btn text-primary" onClick={() => { setCurrentId(key) }}>
+                                            <a className="btn text-primary" onClick={() => { setCurrentId(val) }}>
                                                 <i className="fas fa-pencil-alt"></i>
                                             </a>
-                                            <a className="btn text-danger" onClick={() => { onDelete(key) }}>
+                                            <a className="btn text-danger" onClick={() => { onDelete(val) }}>
                                                 <i className="far fa-trash-alt"></i>
                                             </a>
                                         </td>
                                     </tr>
+                                ) : null 
                                 ))
                             }
                         </tbody>
                     </table>
                 </div>
             </div>
-        </>
+        </div>
     );
 }
 
-export default Contacts;
+export default Jobs;

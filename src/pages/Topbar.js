@@ -1,5 +1,6 @@
 import React from "react";
 import clsx from "clsx";
+import {Link} from 'react-router-dom'
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
 import AppBar from "@material-ui/core/AppBar";
@@ -27,13 +28,14 @@ import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
-import Link from "@material-ui/core/Link";
+// import Link from "@material-ui/core/Link";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 
 import Chart from "../components/Dashboard/Chart";
 import Deposits from "../components/Dashboard/Deposits";
 import Assignments from "../components/Dashboard/Assignments";
 import Grades from "../components/Dashboard/Grades";
+import { Redirect } from "react-router-dom";
 
 const drawerWidth = 240;
 
@@ -220,47 +222,17 @@ export default function MiniDrawer() {
         </List>
         <Divider />
         <List>
-          <ListItem button>
-            <ListItemIcon>
+          <Link to='/resumedata'>
+          <ListItem button >
+            <ListItemIcon >
               <ReceiptIcon />
             </ListItemIcon>
             <ListItemText primary="Get Resume" />
           </ListItem>
+          </Link>
         </List>
       </Drawer>
-      <main className={classes.content}>
-        <div className={classes.toolbar} />
-        {/* <Container maxWidth="lg" className={classes.container}>
-          <Grid container spacing={3}>
-            <Grid item xs={12} md={8} lg={9}>
-              <Paper className={fixedHeightPaper}>
-                <Chart />
-              </Paper>
-            </Grid>
-
-            <Grid item xs={12} md={4} lg={3}>
-              <Paper className={fixedHeightPaper}>
-                <Deposits />
-              </Paper>
-            </Grid>
-
-            <Grid item xs={12}>
-              <Paper className={classes.paper}>
-                <Assignments />
-              </Paper>
-            </Grid>
-
-            <Grid item xs={12}>
-              <Paper className={classes.paper}>
-                <Grades />
-              </Paper>
-            </Grid>
-          </Grid>
-          <Box pt={4}>
-            <Copyright />
-          </Box>
-        </Container> */}
-      </main>
+     
     </div>
   );
 }

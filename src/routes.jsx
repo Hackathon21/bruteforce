@@ -5,7 +5,10 @@ import SkillForm from "./components/Forms/SkillsForm";
 import Landing from "./components/Dashboard/Landing";
 import Login from "./pages/Login";
 import Grades from "./pages/Grades";
-import Contact from "../src/pages/Contacts";
+
+import Assignment from "./pages/Assignment";
+import Jobs from "./pages/Jobs";
+import Course from "./pages/Course";
 const Routes = () => {
   return (
     <BrowserRouter>
@@ -13,11 +16,21 @@ const Routes = () => {
         <Route exact path="/login">
           <Login />
         </Route>
-        <Route exact path="/contact">
-          <Contact />
+        <Route
+          exact
+          path="/resume"
+          // component={<ResumePage />}
+          render={(props) => <ResumePage {...props} />}
+        />
+        
+        <Route exact path="/jobs">
+          <Jobs />
         </Route>
-        <Route exact path="/resume">
-          <ResumePage />
+        <Route exact path="/assignment">
+          <Assignment />
+        </Route>
+        <Route exact path="/course">
+          <Course />
         </Route>
         <Route exact path="/check">
           <Landing />

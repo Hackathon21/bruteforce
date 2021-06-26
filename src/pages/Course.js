@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import ContactForm from "../pages/GradesForm";
+import ContactForm from "../pages/CourseForm";
 import firebaseDb from "../config/firebase";
 import {isAuthenticated} from "../utils/auth";
 import Topbar from "../pages/Topbar";
 import "../css/Contact.css";
 
 
-const Grades = () => {
+const Course = () => {
 
 	var [currentId, setCurrentId] = useState('');
     var [contactObjects, setContactObjects] = useState({})
 
     //Once components load complete
     useEffect(() => {
-        firebaseDb.child('grades').on('value', snapshot => {
+        firebaseDb.child('course').on('value', snapshot => {
             if (snapshot.val() != null) {
                 
                     setContactObjects({
@@ -28,7 +28,7 @@ const Grades = () => {
 
     const addOrEdit = (obj) => {
         if (currentId == '')
-        firebaseDb.child('grades').push(
+        firebaseDb.child('course').push(
             obj,
             err => {
                 if (err)
@@ -37,7 +37,7 @@ const Grades = () => {
                     setCurrentId('')
             })
     else
-        firebaseDb.child(`contacts/${currentId}`).set(
+        firebaseDb.child(`course/${currentId}`).set(
             obj,
             err => {
                 if (err)
@@ -49,7 +49,7 @@ const Grades = () => {
 
     const onDelete = id => {
         if (window.confirm('Are you sure to delete this record?')) {
-            firebaseDb.child(`contacts/${id}`).remove(
+            firebaseDb.child(`course/${id}`).remove(
                 err => {
                     if (err)
                         console.log(err)
@@ -66,7 +66,7 @@ const Grades = () => {
         <Topbar/>
             <div className="jumbotron jumbotron-fluid">
                 <div className="container">
-                    <h1 className="display-4 text-center">Subject Grades</h1>
+                    <h1 className="display-4 text-center">Course Completion</h1>
                 </div>
             </div>
             <div className="row">
@@ -78,7 +78,7 @@ const Grades = () => {
                         <thead className="thead-light">
                             <tr>
                                 <th>Subject Name</th>
-                                <th>Marks</th>
+                                <th>Percent Completed</th>
                                 {/* <th>Email</th> */}
                                 <th>Actions</th>
                             </tr>
@@ -115,4 +115,4 @@ const Grades = () => {
     );
 }
 
-export default Grades;
+export default Course;
