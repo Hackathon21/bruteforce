@@ -153,9 +153,11 @@ export default function MiniDrawer() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap>
+          <Link to="/dashboard">
+          <Typography variant="h6" style={{color:"#FFF", fontWeight:"bold",textDecoration:"underline"}} noWrap>
             StudentsMate
           </Typography>
+          </Link>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -182,30 +184,38 @@ export default function MiniDrawer() {
         </div>
         <Divider />
         <List>
+        <Link to ="/grades">
           <ListItem button>
             <ListItemIcon>
               <GradeIcon />
             </ListItemIcon>
             <ListItemText primary="Grades" />
           </ListItem>
+          </Link>
+          <Link to ="/assignment">
           <ListItem button>
             <ListItemIcon>
               <AssignmentIcon />
             </ListItemIcon>
             <ListItemText primary="Assignments" />
           </ListItem>
+          </Link>
+          <Link to ="/courses">
           <ListItem button>
             <ListItemIcon>
               <BookIcon />
             </ListItemIcon>
             <ListItemText primary="Courses" />
           </ListItem>
+          </Link>
+          <Link to='/jobs'>
           <ListItem button>
             <ListItemIcon>
               <WorkIcon />
             </ListItemIcon>
             <ListItemText primary="Jobs" />
           </ListItem>
+          </Link>
         </List>
         <Divider />
         <List>

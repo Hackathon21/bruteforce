@@ -4,9 +4,10 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Title from './Title';
-
+import firebaseDb from "../../config/firebase";
+import { isAuthenticated } from "../../utils/auth";
 // Generate Order Data
 function createData(id, sub, sem, grade) {
   return { id, sub, sem, grade };
@@ -34,6 +35,19 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Grades() {
   const classes = useStyles();
+  const user_id = isAuthenticated().id;
+  var [contactObjects, setContactObjects] = useState({});
+
+  useEffect(() => {
+    firebaseDb.child("grades").on("value", (snapshot) => {
+      if (snapshot.val() != null) {
+        setContactObjects({
+          ...snapshot.val(),
+        });
+      }
+    });
+  }, []);
+
   return (
     <React.Fragment>
       <Title>Grades</Title>
@@ -41,18 +55,18 @@ export default function Grades() {
         <TableHead>
           <TableRow>
             <TableCell>Subject</TableCell>
-            <TableCell>sem</TableCell>
             <TableCell>Grade</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
-            <TableRow key={row.id}>
-              <TableCell>{row.sub}</TableCell>
-              <TableCell>{row.sem}</TableCell>
-              <TableCell>{row.grade}</TableCell>
+        { Object.keys(contactObjects).map((val,key) =>(
+         user_id == contactObjects[val].email  ? 
+            <TableRow key={key}>
+              <TableCell>{contactObjects[val].fullName}</TableCell>
+              <TableCell>{contactObjects[val].mobile}</TableCell>
             </TableRow>
-          ))}
+          : null))
+        }
         </TableBody>
       </Table>
     </React.Fragment>

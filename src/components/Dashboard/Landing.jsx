@@ -6,13 +6,15 @@ import Paper from "@material-ui/core/Paper";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import clsx from "clsx";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Topbar from "../../pages/Topbar";
 import Assignments from "./Assignments";
 import Chart from "./Chart";
 import Deposits from "./Deposits";
 import Grades from "./Grades";
-// import { isAuthenticated } from "../../utils/auth";
+import firebaseDb from "../../config/firebase";
+
+import { isAuthenticated } from "../../utils/auth";
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -99,8 +101,8 @@ function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {"Copyright © "}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
+      <Link color="inherit" href="#">
+        StudentsMate
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}

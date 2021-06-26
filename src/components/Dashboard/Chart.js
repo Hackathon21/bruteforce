@@ -25,17 +25,17 @@ export default function Charts() {
     </div>
       
      
-      <Button variant="contained" color="secondary" >
-        <b>Grades</b>
+      <Button variant="contained" color="primary" >
+      <Link to="/grades" style={{color:'white',width:"100%"}}><b>Grades</b></Link>
       </Button>
-      <Button variant="contained" color="secondary">
-        <b>Assignments</b>
+      <Button variant="contained" color="primary">
+      <Link to="/assignment" style={{color:'white',width:"100%"}}><b>Assignments</b></Link>
       </Button>
-      <Button variant="contained" color="secondary">
-        <b>Courses</b>
+      <Button variant="contained" color="primary">
+      <Link to="/courses" style={{color:'white',width:"100%"}}><b>Courses</b></Link>
       </Button>
-      <Button variant="contained" color="secondary">
-        <b>Jobs</b>
+      <Button variant="contained" color="primary">
+      <Link to="/jobs" style={{color:'white',width:"100%"}}><b>Jobs</b></Link>
       </Button>
     
     </>

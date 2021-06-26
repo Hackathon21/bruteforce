@@ -8,9 +8,11 @@ import '../css/login.css';
 
 const Login = () => {
     const [loggedIn, setLoggedIn] = useState(false)
+    
     const handleOnClick = (provider) =>{
         socialMediaAuth(provider).then( async res =>{
             console.log(res);
+            
             const data = {
                 name: res.displayName,
                 email: res.email,
